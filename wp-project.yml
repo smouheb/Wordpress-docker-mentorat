@@ -1,0 +1,36 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7.33
+    volumes:
+      - /Users/smaelmouheb/Docker/app :/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: sma1234
+      MYSQL_USER: sma
+      MYSQL_PASSWORD: sma
+    ports:
+      - "3306:3306"
+    networks:
+      - net
+    restart: always
+
+  web:
+    depends_on:
+      - db
+    image: wordpress:5.7.0-apache
+    volumes:
+      - /Users/smaelmouheb/Docker/wp :/var/lib/html
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: test
+      WORDPRESS_DB_USER: sma
+      WORDPRESS_DB_PASSWORD: sma
+    ports:
+     - "8080:80"
+    networks:
+     - net
+    restart: always
+
+networks:
+  net:
