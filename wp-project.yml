@@ -3,12 +3,12 @@ services:
   db:
     image: mysql:5.7.33
     volumes:
-      - /Users/smaelmouheb/Docker/app :/var/lib/mysql
+      - <path to your host folder> :/var/lib/mysql
     environment:
-      MYSQL_DATABASE: test
-      MYSQL_ROOT_PASSWORD: sma1234
-      MYSQL_USER: sma
-      MYSQL_PASSWORD: sma
+      MYSQL_DATABASE: <add your db name>
+      MYSQL_ROOT_PASSWORD: <add a password for root>
+      MYSQL_USER: <add username>
+      MYSQL_PASSWORD: <add password>
     ports:
       - "3306:3306"
     networks:
@@ -20,12 +20,12 @@ services:
       - db
     image: wordpress:5.7.0-apache
     volumes:
-      - /Users/smaelmouheb/Docker/wp :/var/lib/html
+      - <path to your host folder> :/var/lib/html
     environment:
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_NAME: test
-      WORDPRESS_DB_USER: sma
-      WORDPRESS_DB_PASSWORD: sma
+      WORDPRESS_DB_NAME: <add data from db above>
+      WORDPRESS_DB_USER: <add data from db above>
+      WORDPRESS_DB_PASSWORD: <add data from db above>
     ports:
      - "8080:80"
     networks:
