@@ -3,12 +3,12 @@ services:
   db:
     image: mysql:5.7.33
     volumes:
-      - <add directory> :/var/lib/mysql
+      - /Users/smaelmouheb/Docker/app :/var/lib/mysql
     environment:
-      MYSQL_DATABASE: <add name>
-      MYSQL_ROOT_PASSWORD: <add password for root>
-      MYSQL_USER: <add user>
-      MYSQL_PASSWORD: <add password>
+      MYSQL_DATABASE: db_sma
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: sma
+      MYSQL_PASSWORD: sma
     networks:
       - net
     restart: always
@@ -18,12 +18,12 @@ services:
       - db
     image: wordpress:5.7.0-apache
     volumes:
-      - <add directory>:/var/lib/html
+      - /Users/smaelmouheb/Docker/wp :/var/lib/html
     environment:
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_NAME: <add name>
-      WORDPRESS_DB_USER: <add user>
-      WORDPRESS_DB_PASSWORD: <add password>
+      WORDPRESS_DB_NAME: db_sma
+      WORDPRESS_DB_USER: sma
+      WORDPRESS_DB_PASSWORD: sma
       WP_DEBUG: "true"
       WP_DEBUG_DISPLAY: "false"
       WP_DEBUG_LOG: "true"
